@@ -6,9 +6,9 @@ from classes.song import Song
 class TestRoom(unittest.TestCase):
     def setUp(self):
         self.room = Room("The Freddie Mercury Room", 2, 5)
-        self.guest1 = Guest("Rachel", 100)
-        self.guest2 = Guest("Lauren", 50)
-        self.guest3 = Guest("Derrian", 500)
+        self.guest1 = Guest("Rachel", 100, "Hold On")
+        self.guest2 = Guest("Lauren", 50, "Foundations")
+        self.guest3 = Guest("Derrian", 500, "Shake It Off")
         self.song1 = Song("Hold On")
         self.song2 = Song("Foundations")
         self.song3 = Song("Shake It Off")
