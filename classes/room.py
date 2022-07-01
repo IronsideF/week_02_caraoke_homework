@@ -6,7 +6,10 @@ class Room:
         self.size = _size
     
     def check_in(self, guest):
-        self.guests.append(guest)
+        if len(self.guests) < self.size:
+            self.guests.append(guest)
+        else:
+            return 'This room is full'
 
     def find_guest_by_name(self, guest_name):
         for guest in self.guests:

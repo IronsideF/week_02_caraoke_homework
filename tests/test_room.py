@@ -5,7 +5,7 @@ from classes.song import Song
 
 class TestRoom(unittest.TestCase):
     def setUp(self):
-        self.room = Room("The Freddie Mercury Room", 8)
+        self.room = Room("The Freddie Mercury Room", 2)
         self.guest1 = Guest("Rachel")
         self.guest2 = Guest("Lauren")
         self.guest3 = Guest("Derrian")
@@ -37,5 +37,9 @@ class TestRoom(unittest.TestCase):
         self.room.add_song_to_room(self.song1)
         self.assertEqual(1, len(self.room.songs))
     def test_room_has_size(self):
-        self.assertEqual(8, self.room.size)
+        self.assertEqual(2, self.room.size)
+    def test_room_cannot_add_too_many_guests(self):
+        self.room.check_in(self.guest1)
+        self.room.check_in(self.guest2)
+        self.assertEqual("This room is full", self.room.check_in(self.guest3))
 
