@@ -28,3 +28,9 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(self.guest1, self.room.find_guest_by_name("Rachel"))
     def test_room_can_find_guest_not_found(self):
         self.assertEqual('Guest Not Found', self.room.find_guest_by_name("Rachel"))
+    def test_check_out_removes_guests(self):
+        self.room.check_in(self.guest1)
+        self.room.check_out("Rachel")
+        self.assertEqual(0, len(self.room.guests))
+    def test_check_out_guest_not_found(self):
+        self.assertEqual("That Guest is not in this room", self.room.check_out("Rachel"))
