@@ -61,5 +61,8 @@ class TestRoom(unittest.TestCase):
     def test_add_to_tab(self):
         self.room.add_to_tab(5)
         self.assertEqual(5, self.room.bar_tab)
+    def test_check_in_adds_to_tab(self):
+        self.room.check_in_on_tab(self.guest1)
+        self.assertEqual(5, self.room.bar_tab)
 
 

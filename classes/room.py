@@ -41,3 +41,12 @@ class Room:
     
     def add_to_tab(self, amount_change):
         self.bar_tab += amount_change
+
+    def check_in_on_tab(self, guest):
+        if len(self.guests) < self.size:
+            self.guests.append(guest)
+            self.add_to_tab(self.entry_fee)
+            if self.find_song_by_name(guest.fave_song) in self.songs:
+                return guest.check_fave_song(guest.fave_song)
+        elif len(self.guests) >= self.size:
+            return 'This room is full'
