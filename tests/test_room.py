@@ -12,6 +12,7 @@ class TestRoom(unittest.TestCase):
         self.song1 = Song("Hold On")
         self.song2 = Song("Foundations")
         self.song3 = Song("Shake It Off")
+        self.song_list = [self.song1, self.song2, self.song3]
     
     def test_room_has_name(self):
         self.assertEqual("The Freddie Mercury Room", self.room.name)
@@ -50,4 +51,15 @@ class TestRoom(unittest.TestCase):
     def test_room_fee_prevents_entry(self):
         self.guest1.cash = 0
         self.assertEqual('Not enough money', self.room.check_in(self.guest1))
+    def test_guest_fave_song_check_in(self):
+        self.room.songs = self.song_list
+        self.assertEqual("Whooo!", self.room.check_in(self.guest1))
+    def test_guest_fave_song_not_present(self):
+        self.assertEqual(None, self.room.check_in(self.guest1))
+    def test_room_has_tab(self):
+        self.assertEqual(0, self.room.bar_tab)
+    def test_add_to_tab(self):
+        self.room.add_to_tab(5)
+        self.assertEqual(5, self.room.bar_tab)
+
 

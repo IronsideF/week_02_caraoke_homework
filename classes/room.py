@@ -5,11 +5,14 @@ class Room:
         self.songs = []
         self.size = _size
         self.entry_fee = _fee
+        self.bar_tab = 0
     
     def check_in(self, guest):
         if len(self.guests) < self.size and guest.cash >= self.entry_fee:
             self.guests.append(guest)
-            guest.cash -= self.entry_fee
+            guest.reduce_cash(self.entry_fee)
+            if self.find_song_by_name(guest.fave_song) in self.songs:
+                return guest.check_fave_song(guest.fave_song)
         elif len(self.guests) >= self.size:
             return 'This room is full'
         elif guest.cash < self.entry_fee:
@@ -30,3 +33,11 @@ class Room:
     
     def add_song_to_room(self, song):
         self.songs.append(song)
+    
+    def find_song_by_name(self, song_name):
+        for song in self.songs:
+            if song.name == song_name:
+                return song
+    
+    def add_to_tab(self, amount_change):
+        self.bar_tab += amount_change
