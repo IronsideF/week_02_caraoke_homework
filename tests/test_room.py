@@ -6,9 +6,9 @@ from classes.song import Song
 class TestRoom(unittest.TestCase):
     def setUp(self):
         self.room = Room("The Freddie Mercury Room", 2, 5)
-        self.guest1 = Guest("Rachel")
-        self.guest2 = Guest("Lauren")
-        self.guest3 = Guest("Derrian")
+        self.guest1 = Guest("Rachel", 100)
+        self.guest2 = Guest("Lauren", 50)
+        self.guest3 = Guest("Derrian", 500)
         self.song1 = Song("Hold On")
         self.song2 = Song("Foundations")
         self.song3 = Song("Shake It Off")
@@ -42,4 +42,12 @@ class TestRoom(unittest.TestCase):
         self.room.check_in(self.guest1)
         self.room.check_in(self.guest2)
         self.assertEqual("This room is full", self.room.check_in(self.guest3))
+    def test_room_has_fee(self):
+        self.assertEqual(5, self.room.entry_fee)
+    def test_room_fee_applied(self):
+        self.room.check_in(self.guest1)
+        self.assertEqual(self.guest1.cash, 95)
+    def test_room_fee_prevents_entry(self):
+        self.guest1.cash = 0
+        self.assertEqual('Not enough money', self.room.check_in(self.guest1))
 

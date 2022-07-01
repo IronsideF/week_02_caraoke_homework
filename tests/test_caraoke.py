@@ -10,8 +10,9 @@ class TestCaraoke(unittest.TestCase):
         self.assertEqual(8, room1.size)
         self.assertEqual(5, room1.entry_fee)
     def test_create_guest_profile(self):
-        guest1 = create_guest_profile("Rachel")
+        guest1 = create_guest_profile("Rachel", 100)
         self.assertEqual("Rachel", guest1.name)
+        self.assertEqual(100, guest1.cash)
     def test_create_song(self):
         song1 = create_song("Hold On")
         self.assertEqual("Hold On", song1.name)

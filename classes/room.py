@@ -7,10 +7,13 @@ class Room:
         self.entry_fee = _fee
     
     def check_in(self, guest):
-        if len(self.guests) < self.size:
+        if len(self.guests) < self.size and guest.cash >= self.entry_fee:
             self.guests.append(guest)
-        else:
+            guest.cash -= self.entry_fee
+        elif len(self.guests) >= self.size:
             return 'This room is full'
+        elif guest.cash < self.entry_fee:
+            return 'Not enough money'
 
     def find_guest_by_name(self, guest_name):
         for guest in self.guests:
