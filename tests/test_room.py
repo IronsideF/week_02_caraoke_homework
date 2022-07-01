@@ -5,7 +5,7 @@ from classes.song import Song
 
 class TestRoom(unittest.TestCase):
     def setUp(self):
-        self.room = Room("The Freddie Mercury Room")
+        self.room = Room("The Freddie Mercury Room", 8)
         self.guest1 = Guest("Rachel")
         self.guest2 = Guest("Lauren")
         self.guest3 = Guest("Derrian")
@@ -24,7 +24,6 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(1, len(self.room.guests))
     def test_room_can_find_guest(self):
         self.room.check_in(self.guest1)
-        # guest_in_room = self.room.find_guest_by_name("Rachel")
         self.assertEqual(self.guest1, self.room.find_guest_by_name("Rachel"))
     def test_room_can_find_guest_not_found(self):
         self.assertEqual('Guest Not Found', self.room.find_guest_by_name("Rachel"))
@@ -37,4 +36,6 @@ class TestRoom(unittest.TestCase):
     def test_add_song(self):
         self.room.add_song_to_room(self.song1)
         self.assertEqual(1, len(self.room.songs))
+    def test_room_has_size(self):
+        self.assertEqual(8, self.room.size)
 
