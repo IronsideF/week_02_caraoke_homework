@@ -1,9 +1,10 @@
 class Room:
-    def __init__(self, _name, _size):
+    def __init__(self, _name, _size, _fee):
         self.name = _name
         self.guests = []
         self.songs = []
         self.size = _size
+        self.entry_fee = _fee
     
     def check_in(self, guest):
         if len(self.guests) < self.size:

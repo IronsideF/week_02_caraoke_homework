@@ -5,7 +5,7 @@ from classes.song import Song
 
 class TestRoom(unittest.TestCase):
     def setUp(self):
-        self.room = Room("The Freddie Mercury Room", 2)
+        self.room = Room("The Freddie Mercury Room", 2, 5)
         self.guest1 = Guest("Rachel")
         self.guest2 = Guest("Lauren")
         self.guest3 = Guest("Derrian")
