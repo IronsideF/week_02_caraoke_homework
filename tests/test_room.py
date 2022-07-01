@@ -34,3 +34,7 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(0, len(self.room.guests))
     def test_check_out_guest_not_found(self):
         self.assertEqual("That Guest is not in this room", self.room.check_out("Rachel"))
+    def test_add_song(self):
+        self.room.add_song_to_room(self.song1)
+        self.assertEqual(1, len(self.room.songs))
+

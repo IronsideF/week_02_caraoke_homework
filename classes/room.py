@@ -19,3 +19,6 @@ class Room:
             self.guests.remove(guest)
         else:
             return "That Guest is not in this room"
+    
+    def add_song_to_room(self, song):
+        self.songs.append(song)
