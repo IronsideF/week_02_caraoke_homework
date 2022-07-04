@@ -50,3 +50,17 @@ class Room:
                 return guest.check_fave_song(guest.fave_song)
         elif len(self.guests) >= self.size:
             return 'This room is full'
+    
+    def add_songs_by_artist(self, artist, song_list):
+        songs_to_add = [song for song in song_list if song.artist == artist]
+        for song in songs_to_add:
+            self.songs.append(song)
+    
+    def add_songs_by_genre(self, genre, song_list):
+        songs_to_add = [song for song in song_list if song.genre == genre]
+        for song in songs_to_add:
+            self.songs.append(song)
+    
+    def close_room(self):
+        self.guests.clear()
+        self.songs.clear()
